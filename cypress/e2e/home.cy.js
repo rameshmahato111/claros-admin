@@ -1,5 +1,5 @@
 describe("Home Page", () => {
-  // Mock product data for test consistency
+  
   const mockProducts = [
     {
       id: 1,
@@ -22,7 +22,7 @@ describe("Home Page", () => {
   ];
 
   beforeEach(() => {
-    // Intercept the API call and mock data
+   
     cy.intercept("GET", "https://fakestoreapi.com/products", {
       statusCode: 200,
       body: mockProducts,
@@ -34,17 +34,16 @@ describe("Home Page", () => {
   it("renders HomeComponent and product preview", () => {
     cy.wait("@getProducts");
 
-    // Check HomeComponent rendered (assuming it renders a known text or element)
-    // Replace with something from your HomeComponent if you want
-    cy.get("body").should("contain.text", ""); // add a selector or text inside HomeComponent if any
+    
+    cy.get("body").should("contain.text", ""); 
 
-    // Check heading and "View More" link
+
     cy.contains("h2", "New Products Added").should("exist");
     cy.contains("View More")
       .should("exist")
       .and("have.attr", "href", "/products");
 
-    // Use heading's parent to scope
+
     cy.contains("h2", "New Products Added")
       .parent()
       .parent()
@@ -63,7 +62,7 @@ describe("Home Page", () => {
   });
 
   it("shows loading state", () => {
-    // Intercept and delay to simulate loading
+   
     cy.intercept("GET", "https://fakestoreapi.com/products", (req) => {
       req.on("response", (res) => {
         res.setDelay(2000);
@@ -75,7 +74,7 @@ describe("Home Page", () => {
   });
 
   it("shows error state on API failure", () => {
-    // Force API failure
+
     cy.intercept("GET", "https://fakestoreapi.com/products", {
       statusCode: 500,
       body: {},

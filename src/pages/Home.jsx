@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Home = () => {
   const { data, isLoading, isError } = useGetProductsQuery();
   const newProducts = data?.slice(0, 2)
-  console.log("this is new product in home page", newProducts)
+  
   return (
     <>
     <HomeComponent />
