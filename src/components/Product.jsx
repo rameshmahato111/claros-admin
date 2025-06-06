@@ -15,8 +15,7 @@ const ProductComponent = () => {
   const searchProduct = data?.filter((product) =>
     product.title.toLocaleLowerCase().includes(search.toLocaleLowerCase())
   );
-  console.log('all products', data)
-  console.log("the search products are here")
+  
   if(isLoading) return <p>Products loading please wait ...</p>
   if(error) return <p>{error.message ?? "something went wrong. please try again."}</p>
   return (

@@ -15,7 +15,7 @@ const UserComponent = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedEmail, setSelectedEmail] = useState(""); // ✅ Renamed here
 
-  console.log("user data", data);
+  
 
   const filterUser = data?.filter((user) =>
     `${user.name.firstname}`
